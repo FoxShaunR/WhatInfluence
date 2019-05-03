@@ -1,16 +1,8 @@
-const express = require('express');
 const FeedParser = require('feedparser');
 const request = require('request'); // for fetching the feed
 const cron = require('node-cron');
 
-const app = express();
-const port = 3000;
-
 const feedparser = new FeedParser([]);
-
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 cron.schedule('* * * * *', () => {
   const req = request('http://kotaku.com/vip.xml')

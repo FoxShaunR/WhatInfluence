@@ -10,7 +10,6 @@
   "author": "Shaun Fox",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
     "feedparser": "^2.2.9",
     "node-cron": "^2.0.3",
     "request": "^2.88.0"
