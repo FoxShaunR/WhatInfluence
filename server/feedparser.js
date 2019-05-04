@@ -3,16 +3,22 @@ const FeedParser = require('feedparser');
 const request = require('request'); // for fetching the feed
 const cron = require('node-cron');
 
-function fetch(feed) {
+const FREQUENCY = 5; // Fetch feed every FREQUENCY minutes
+
+function fetchFeed(feed) {
+  // Keep track of the starting date for this fetch iteration
+  const startDate = new Date(feed.lastPub);
+
   // Define our streams
-  var req = request(feed, {timeout: 10000, pool: false});
+  const req = request(feed.url, {timeout: 10000, pool: false});
   req.setMaxListeners(50);
   // Some feeds do not respond without user-agent and accept headers.
   req.setHeader('user-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36');
   req.setHeader('accept', 'text/html,application/xhtml+xml');
 
-  var feedparser = new FeedParser();
+  const feedparser = new FeedParser();
 
+  console.log('Logging posts after ', startDate);
 
   // Define our handlers
   req.on('error', done);
@@ -28,15 +34,21 @@ function fetch(feed) {
   feedparser.on('error', done);
   feedparser.on('end', done);
   feedparser.on('readable', function() {
-    var post;
+    let post;
     while (post = this.read()) {
-      console.log(post.title);
+      // Only record new items
+      if (startDate < new Date(post.pubDate)) {
+        if (new Date(feed.lastPub) < new Date(post.pubDate)) {
+          feed.lastPub = post.pubDate;
+        }
+        console.log(post.title, post.pubDate);
+      }
     }
   });
 }
 
 function maybeDecompress (res, encoding) {
-  var decompress;
+  let decompress;
   if (encoding.match(/\bdeflate\b/)) {
     decompress = zlib.createInflate();
   } else if (encoding.match(/\bgzip\b/)) {
@@ -46,7 +58,7 @@ function maybeDecompress (res, encoding) {
 }
 
 function maybeTranslate (res, charset) {
-  var iconv;
+  let iconv;
   // Use iconv if its not utf8 already.
   if (!iconv && charset && !/utf-*8/i.test(charset)) {
     try {
@@ -64,8 +76,8 @@ function maybeTranslate (res, charset) {
 }
 
 function getParams(str) {
-  var params = str.split(';').reduce(function (params, param) {
-    var parts = param.split('=').map(function (part) { return part.trim(); });
+  const params = str.split(';').reduce(function (params, param) {
+    const parts = param.split('=').map(function (part) { return part.trim(); });
     if (parts.length === 2) {
       params[parts[0]] = parts[1];
     }
@@ -83,12 +95,15 @@ function done(err) {
 }
 
 const scheduleFeeds = (feeds = []) => {
-  console.info('Scheduling feeds')
-  cron.schedule('* * * * *', () => {
-    console.info('running a task every minute');
-
-    Promise.all(feeds.map(async feed => {
-      fetch(feed);
+  // Initialize lastPub to 2 days ago
+  const feedObjs = feeds.map(feed => (
+    { url: feed, lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)) }
+  ));
+  console.info(`Scheduling feeds every ${FREQUENCY} minutes`);
+  // http://openjs.com/scripts/jslibrary/demos/crontab.php
+  cron.schedule(`*/${FREQUENCY} * * * *`, () => {
+    Promise.all(feedObjs.map(async feed => {
+      fetchFeed(feed);
     }));
   });
 } 
