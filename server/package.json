@@ -12,7 +12,9 @@
   "dependencies": {
     "feedparser": "^2.2.9",
     "node-cron": "^2.0.3",
+    "pg": "^7.10.0",
     "request": "^2.88.0",
+    "sequelize": "^5.8.5",
     "winston": "^3.2.1"
   }
 }
