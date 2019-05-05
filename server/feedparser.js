@@ -2,6 +2,7 @@
 const FeedParser = require('feedparser');
 const request = require('request'); // for fetching the feed
 const cron = require('node-cron');
+const winston = require('winston');
 
 const FREQUENCY = 5; // Fetch feed every FREQUENCY minutes
 
@@ -18,7 +19,7 @@ function fetchFeed(feed) {
 
   const feedparser = new FeedParser();
 
-  console.log('Logging posts after ', startDate);
+  winston.info('Logging posts after ', startDate);
 
   // Define our handlers
   req.on('error', done);
@@ -41,7 +42,7 @@ function fetchFeed(feed) {
         if (new Date(feed.lastPub) < new Date(post.pubDate)) {
           feed.lastPub = post.pubDate;
         }
-        console.log(post.title, post.pubDate);
+        winston.info(`${post.pubDate}: ${post.title}`);
       }
     }
   });
@@ -63,7 +64,7 @@ function maybeTranslate (res, charset) {
   if (!iconv && charset && !/utf-*8/i.test(charset)) {
     try {
       iconv = new Iconv(charset, 'utf-8');
-      console.log('Converting from charset %s to utf-8', charset);
+      winston.info('Converting from charset %s to utf-8');
       iconv.on('error', done);
       // If we're using iconv, stream will be the output of iconv
       // otherwise it will remain the output of request
@@ -88,7 +89,7 @@ function getParams(str) {
 
 function done(err) {
   if (err) {
-    console.log(err, err.stack);
+    winston.error(err);
     // return process.exit(1);
   }
   // process.exit();
@@ -99,7 +100,7 @@ const scheduleFeeds = (feeds = []) => {
   const feedObjs = feeds.map(feed => (
     { url: feed, lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)) }
   ));
-  console.info(`Scheduling feeds every ${FREQUENCY} minutes`);
+  winston.info(`Scheduling feeds every ${FREQUENCY} minutes`);
   // http://openjs.com/scripts/jslibrary/demos/crontab.php
   cron.schedule(`*/${FREQUENCY} * * * *`, () => {
     Promise.all(feedObjs.map(async feed => {

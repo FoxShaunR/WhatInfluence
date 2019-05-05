@@ -12,6 +12,7 @@
   "dependencies": {
     "feedparser": "^2.2.9",
     "node-cron": "^2.0.3",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "winston": "^3.2.1"
   }
 }
