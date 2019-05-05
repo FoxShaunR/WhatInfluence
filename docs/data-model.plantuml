@@ -1,0 +1,32 @@
+@startuml
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define primary_key(x) <b>x</b>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+' other tags available:
+' <i></i>
+' <back:COLOR></color>, where color is a color name or html color code
+' (#FFAACC)
+' see: http://plantuml.com/classes.html#More
+hide methods
+hide stereotypes
+
+Table(news, "news\nNews articles from external sources") {
+  primary_key(id) INT,
+  title TEXT,
+  description TEXT,
+  link TEXT,
+  source_id UUID,
+  author TEXT,
+}
+
+Table(news_sources, "news_sources\nExternal news sources") {
+  primary_key(id) INT,
+  name TEXT,
+  url TEXT,
+}
+
+' relationships
+news_sources --> news
+
+@enduml
