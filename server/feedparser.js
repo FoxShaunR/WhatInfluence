@@ -19,7 +19,7 @@ function fetchFeed(feed) {
 
   const feedparser = new FeedParser();
 
-  winston.info('Logging posts after ', startDate);
+  winston.info(`Logging posts after ${startDate}`);
 
   // Define our handlers
   req.on('error', done);
