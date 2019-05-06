@@ -15,7 +15,7 @@ const myFormat = printf(({ level, message, timestamp }) => {
 winston.configure({
   format: combine(
     timestamp(),
-    myFormat,
+    myFormat
   ),
   transports: [
     new winston.transports.File({ filename: 'feedserver.log' }),
