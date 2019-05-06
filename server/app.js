@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const { scheduleFeeds } = require('./feedparser');
 const winston = require('winston');
 const { combine, timestamp, printf } = winston.format;
