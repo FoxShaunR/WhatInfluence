@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     link: DataTypes.STRING,
     author: DataTypes.STRING,
+    pubdate: DataTypes.DATE,
     source_id: {
       type: DataTypes.INTEGER,
       references: {
