@@ -18,6 +18,7 @@ Table(news, "news\nNews articles from external sources") {
   link TEXT,
   source_id UUID,
   author TEXT,
+  pubdate DATE,
 }
 
 Table(news_sources, "news_sources\nExternal news sources") {
