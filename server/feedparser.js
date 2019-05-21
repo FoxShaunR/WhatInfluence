@@ -4,9 +4,12 @@ const request = require('request'); // for fetching the feed
 const cron = require('node-cron');
 const winston = require('winston');
 
-const { getNewsSources } = require('./adminDB');
+const {
+  addNews,
+  getNewsSources,
+} = require('./adminDB');
 
-const FREQUENCY = 5; // Fetch feed every FREQUENCY minutes
+const FREQUENCY = 1; // Fetch feed every FREQUENCY minutes
 
 function fetchFeed(feed) {
   // Keep track of the starting date for this fetch iteration
@@ -36,15 +39,30 @@ function fetchFeed(feed) {
 
   feedparser.on('error', done);
   feedparser.on('end', done);
-  feedparser.on('readable', function() {
+  feedparser.on('readable', async function() {
     let post;
     while (post = this.read()) {
       // Only record new items
       if (startDate < new Date(post.pubDate)) {
-        if (new Date(feed.lastPub) < new Date(post.pubDate)) {
+        const {
+          author,
+          description,
+          link,
+          pubDate,
+          title,
+        } = post;
+        if (new Date(feed.lastPub) < new Date(pubDate)) {
           feed.lastPub = post.pubDate;
         }
-        winston.info(`${post.pubDate}: ${post.title}`);
+        addNews({
+          author,
+          description,
+          link,
+          pubdate: pubDate,
+          source_id: feed.source_id,
+          title,
+        });
+        winston.info(`${pubDate}: ${title}`);
       }
     }
   });
@@ -98,9 +116,12 @@ function done(err) {
 const scheduleFeeds = async () => {
   const { data: feeds } = await getNewsSources();
   // Initialize lastPub to 2 days ago
-  const feedObjs = feeds.map(feed => (
-    { name: feed.name, url: feed.url, lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)) }
-  ));
+  const feedObjs = feeds.map(feed => ({
+      source_id: feed.id,
+      name: feed.name,
+      url: feed.url,
+      lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)),
+    }));
   winston.info(`Scheduling feeds every ${FREQUENCY} minutes`);
   // http://openjs.com/scripts/jslibrary/demos/crontab.php
   cron.schedule(`*/${FREQUENCY} * * * *`, () => {
