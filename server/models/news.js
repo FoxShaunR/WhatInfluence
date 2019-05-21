@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const news = sequelize.define('news', {
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
-    link: DataTypes.STRING,
-    author: DataTypes.STRING,
+    title: DataTypes.TEXT,
+    description: DataTypes.TEXT,
+    link: DataTypes.TEXT,
+    author: DataTypes.TEXT,
     pubdate: DataTypes.DATE,
     source_id: {
       type: DataTypes.INTEGER,
