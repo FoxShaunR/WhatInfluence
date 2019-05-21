@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     link: DataTypes.STRING,
     author: DataTypes.STRING,
     source_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         // This is a reference to another model
         model: 'news_sources',
@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       }
     },
-  }, {});
+  }, {
+    timestamps: true,
+  });
   news.associate = function(models) {
     // associations can be defined here
   };
