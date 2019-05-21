@@ -4,6 +4,8 @@ const request = require('request'); // for fetching the feed
 const cron = require('node-cron');
 const winston = require('winston');
 
+const { getNewsSources } = require('./adminDB');
+
 const FREQUENCY = 5; // Fetch feed every FREQUENCY minutes
 
 function fetchFeed(feed) {
@@ -90,20 +92,20 @@ function getParams(str) {
 function done(err) {
   if (err) {
     winston.error(err);
-    // return process.exit(1);
   }
-  // process.exit();
 }
 
-const scheduleFeeds = (feeds = []) => {
+const scheduleFeeds = async () => {
+  const { data: feeds } = await getNewsSources();
   // Initialize lastPub to 2 days ago
   const feedObjs = feeds.map(feed => (
-    { url: feed, lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)) }
+    { name: feed.name, url: feed.url, lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)) }
   ));
   winston.info(`Scheduling feeds every ${FREQUENCY} minutes`);
   // http://openjs.com/scripts/jslibrary/demos/crontab.php
   cron.schedule(`*/${FREQUENCY} * * * *`, () => {
     Promise.all(feedObjs.map(async feed => {
+      winston.info(`Fetching ${feed.name}`);
       fetchFeed(feed);
     }));
   });
