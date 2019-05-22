@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       }
     },
+    summary: DataTypes.TEXT,
+    post: DataTypes.JSON
   }, {
     timestamps: true,
   });

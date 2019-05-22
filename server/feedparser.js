@@ -47,6 +47,7 @@ function fetchFeed(feed) {
         const {
           author,
           description,
+          summary,
           link,
           pubDate,
           title,
@@ -56,11 +57,13 @@ function fetchFeed(feed) {
         }
         addNews({
           author,
-          description,
+          description: description.replace(/<.*?>/g, ''),
+          summary,
           link,
           pubdate: pubDate,
           source_id: feed.source_id,
           title,
+          post,
         });
         winston.info(`${pubDate}: ${title}`);
       }
