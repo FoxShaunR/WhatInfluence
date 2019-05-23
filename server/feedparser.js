@@ -3,6 +3,8 @@ const FeedParser = require('feedparser');
 const request = require('request'); // for fetching the feed
 const cron = require('node-cron');
 const winston = require('winston');
+const zlib = require('zlib');
+const Iconv = require('iconv').Iconv;
 
 const {
   addNews,
@@ -41,7 +43,7 @@ function fetchFeed(feed) {
   feedparser.on('end', done);
   feedparser.on('readable', async function() {
     let post;
-    while (post = this.read()) {
+    while ((post = this.read())) {
       // Only record new items
       if (startDate < new Date(post.pubDate)) {
         const {
@@ -120,11 +122,11 @@ const scheduleFeeds = async () => {
   const { data: feeds } = await getNewsSources();
   // Initialize lastPub to 2 days ago
   const feedObjs = feeds.map(feed => ({
-      source_id: feed.id,
-      name: feed.name,
-      url: feed.url,
-      lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)),
-    }));
+    source_id: feed.id,
+    name: feed.name,
+    url: feed.url,
+    lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)),
+  }));
   winston.info(`Scheduling feeds every ${FREQUENCY} minutes`);
   // http://openjs.com/scripts/jslibrary/demos/crontab.php
   cron.schedule(`*/${FREQUENCY} * * * *`, () => {
@@ -133,7 +135,7 @@ const scheduleFeeds = async () => {
       fetchFeed(feed);
     }));
   });
-} 
+};
 
 
 exports.scheduleFeeds = scheduleFeeds;

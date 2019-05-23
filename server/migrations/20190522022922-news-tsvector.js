@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface) => {
     return queryInterface.sequelize.transaction((t) => {
       return Promise.all([
         queryInterface.sequelize.query(`
@@ -27,23 +27,23 @@ module.exports = {
           FOR EACH ROW
           EXECUTE PROCEDURE news_vector_trg()
         `, { transaction: t }),
-      ])
-    })
+      ]);
+    });
   },
 
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface) => {
     return queryInterface.sequelize.transaction((t) => {
-        return Promise.all([
-          queryInterface.sequelize.query(`
+      return Promise.all([
+        queryInterface.sequelize.query(`
             DROP TRIGGER calc_news_vector ON news
           `, { transaction: t }),
-          queryInterface.sequelize.query(`
+        queryInterface.sequelize.query(`
             DROP FUNCTION news_vector_trg()
           `, { transaction: t }),
-          queryInterface.sequelize.query(`
+        queryInterface.sequelize.query(`
             ALTER TABLE news DROP COLUMN vector TSVECTOR
           `, { transaction: t }),
-        ])
-      })
-    }
+      ]);
+    });
+  }
 };

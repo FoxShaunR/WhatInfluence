@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const { scheduleFeeds } = require('./feedparser');
 const winston = require('winston');

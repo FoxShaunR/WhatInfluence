@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
   });
-  news.associate = function(models) {
-    // associations can be defined here
-  };
+  // news.associate = function(models) {
+  //   // associations can be defined here
+  // };
   return news;
 };

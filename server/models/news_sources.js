@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
   });
-  news_sources.associate = function(models) {
-    // associations can be defined here
-  };
+  // news_sources.associate = function(models) {
+  //   // associations can be defined here
+  // };
   return news_sources;
 };

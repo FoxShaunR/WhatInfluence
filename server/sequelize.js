@@ -35,11 +35,11 @@ const getSequelize = () => {
   });
 
   fs.readdirSync(path.join(__dirname, 'models'))
-  .filter(isModelFilename)
-  .forEach(file => {
-    const model = sequelize.import(path.join(__dirname, 'models', file));
-    sequelize[model.name] = model;
-  });
+    .filter(isModelFilename)
+    .forEach(file => {
+      const model = sequelize.import(path.join(__dirname, 'models', file));
+      sequelize[model.name] = model;
+    });
 
   Object.keys(sequelize).forEach((modelName) => {
     if (sequelize[modelName].associate) {
@@ -48,6 +48,6 @@ const getSequelize = () => {
   });
 
   return sequelize;
-}
+};
 
 exports.getSequelize = getSequelize;
