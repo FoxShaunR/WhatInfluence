@@ -74,8 +74,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
   });
-  // influencers.associate = function(models) {
-  //   // associations can be defined here
-  // };
+  influencers.associate = function associate(models) {
+    influencers.belongsToMany(models.news, {
+      through: models.influencer_news,
+      foreignKey: 'influencer_id',
+      otherKey: 'news_id'
+    });
+  };
   return influencers;
 };

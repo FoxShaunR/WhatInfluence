@@ -46,12 +46,17 @@ Table(influencers, "influencers\nExternal news sources") {
   twitch_uri TEXT,
   twitch_display TEXT,
   wikipedia_uri TEXT,
-  wikipedia_display TEXT,
-  createdAt TIMESTAMPTZ,
-  updatedAt TIMESTAMPTZ,
+  wikipedia_display TEXT
+}
+
+Table(influencer_news, "influencer_news\nRelated influencer to news") {
+  primary_key(infuencer_id) INT,
+  primary_key(news_id) INT,
 }
 
 ' relationships
 news_sources --> news
+influencers --> influencer_news
+news --> influencer_news
 
 @enduml
