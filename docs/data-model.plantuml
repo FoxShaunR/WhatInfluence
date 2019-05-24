@@ -29,6 +29,28 @@ Table(news_sources, "news_sources\nExternal news sources") {
   url TEXT,
 }
 
+Table(influencers, "influencers\nExternal news sources") {
+  primary_key(id) INT,
+  first_name TEXT,
+  last_name TEXT,
+  full_name TEXT,
+  image_uri TEXT,
+  facebook_uri TEXT,
+  facebook_display TEXT,
+  instagram_uri TEXT,
+  instagram_display TEXT,
+  youtube_uri TEXT,
+  youtube_display TEXT,
+  web_uri TEXT,
+  web_display TEXT,
+  twitch_uri TEXT,
+  twitch_display TEXT,
+  wikipedia_uri TEXT,
+  wikipedia_display TEXT,
+  createdAt TIMESTAMPTZ,
+  updatedAt TIMESTAMPTZ,
+}
+
 ' relationships
 news_sources --> news
 
