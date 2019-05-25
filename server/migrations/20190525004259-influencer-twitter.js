@@ -8,7 +8,7 @@ module.exports = {
           type: Sequelize.TEXT
         }, { transaction: t }),
         queryInterface.addColumn('influencers', 'twitter_display', {
-          type: Sequelize.JSON
+          type: Sequelize.TEXT
         }, { transaction: t }),
       ]);
     });

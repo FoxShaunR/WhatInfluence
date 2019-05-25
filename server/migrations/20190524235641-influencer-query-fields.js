@@ -23,8 +23,8 @@ module.exports = {
             query_items TEXT[] := '{}';
           BEGIN
             NEW.full_name = CONCAT(NEW.first_name, ' ', NEW.last_name);
-            IF NEW.full_name IS NOT NULL THEN
-              query_items := array_append(query_items, NEW.full_name);
+            IF NEW.full_name IS NOT NULL AND NEW.last_name IS NOT NULL THEN
+              query_items := array_append(query_items, CONCAT('(', NEW.first_name, ' & ' , NEW.last_name, ')'));
             END IF;
             IF NEW.facebook_display IS NOT NULL THEN
               query_items := array_append(query_items, NEW.facebook_display);
