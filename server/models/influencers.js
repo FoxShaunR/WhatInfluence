@@ -75,6 +75,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    twitter_uri: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    twitter_display: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     query_terms: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: true,
