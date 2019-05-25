@@ -29,12 +29,13 @@ Table(news_sources, "news_sources\nExternal news sources") {
   url TEXT,
 }
 
-Table(influencers, "influencers\nExternal news sources") {
+Table(influencers, "influencers\nTracked influencers") {
   primary_key(id) INT,
   first_name TEXT,
   last_name TEXT,
   full_name TEXT,
   image_uri TEXT,
+  image_attribution TEXT,
   facebook_uri TEXT,
   facebook_display TEXT,
   instagram_uri TEXT,
@@ -46,10 +47,12 @@ Table(influencers, "influencers\nExternal news sources") {
   twitch_uri TEXT,
   twitch_display TEXT,
   wikipedia_uri TEXT,
-  wikipedia_display TEXT
+  wikipedia_display TEXT,
+  query_terms TEXT[],
+  query TSTQUERY
 }
 
-Table(influencer_news, "influencer_news\nRelated influencer to news") {
+Table(influencer_news, "influencer_news\nRelate influencer to news") {
   primary_key(infuencer_id) INT,
   primary_key(news_id) INT,
 }

@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    image_attribution: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     facebook_uri: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -69,6 +73,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     wikipedia_display: {
       type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    query_terms: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: true,
     }
   }, {
