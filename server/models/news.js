@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     summary: DataTypes.TEXT,
-    post: DataTypes.JSON
+    post: DataTypes.JSON,
+    sentiment: DataTypes.INTEGER
   }, {
     timestamps: true,
   });

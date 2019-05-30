@@ -21,6 +21,7 @@ Table(news, "news\nNews articles from external sources") {
   pubdate DATE,
   summary TEXT,
   post JSON,
+  sentiment INT,
 }
 
 Table(news_sources, "news_sources\nExternal news sources") {
