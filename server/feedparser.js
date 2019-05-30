@@ -1,10 +1,10 @@
-// Based on https://github.com/danmactough/node-feedparser/blob/master/examples/compressed.js
 const FeedParser = require('feedparser');
 const request = require('request'); // for fetching the feed
 const cron = require('node-cron');
 const winston = require('winston');
 const zlib = require('zlib');
 const Iconv = require('iconv').Iconv;
+const { getSentiment } = require('./sentiment');
 
 const {
   addNews,
@@ -13,6 +13,7 @@ const {
 
 const FREQUENCY = 1; // Fetch feed every FREQUENCY minutes
 
+// Based on https://github.com/danmactough/node-feedparser/blob/master/examples/compressed.js
 function fetchFeed(feed) {
   // Keep track of the starting date for this fetch iteration
   const startDate = new Date(feed.lastPub);
@@ -57,15 +58,18 @@ function fetchFeed(feed) {
         if (new Date(feed.lastPub) < new Date(pubDate)) {
           feed.lastPub = post.pubDate;
         }
+        const cleanDesc = description.replace(/<.*?>/g, '');
+        const sentiment = getSentiment(`${title}. ${cleanDesc}`);
         addNews({
           author,
-          description: description.replace(/<.*?>/g, ''),
+          description: cleanDesc,
           summary,
           link,
           pubdate: pubDate,
           source_id: feed.source_id,
           title,
           post,
+          sentiment,
         });
         winston.info(`${pubDate}: ${title}`);
       }

@@ -19,7 +19,10 @@
     "node-cron": "^2.0.3",
     "pg": "^7.10.0",
     "request": "^2.88.0",
+    "retext-english": "^3.0.2",
+    "retext-sentiment": "^4.1.1",
     "sequelize": "^5.8.5",
+    "unified": "^7.1.0",
     "winston": "^3.2.1"
   }
 }
