@@ -83,6 +83,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    primary_uri: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    primary_display: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     query_terms: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: true,

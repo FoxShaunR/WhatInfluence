@@ -51,6 +51,8 @@ Table(influencers, "influencers\nTracked influencers") {
   wikipedia_display TEXT,
   twitter_uri TEXT,
   twitter_display TEXT,
+  primary_uri TEXT,
+  primary_display TEXT,
   query_terms TEXT[],
   query TSTQUERY
 }
