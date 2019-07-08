@@ -4,8 +4,6 @@ const { scheduleFeeds } = require('./feedparser');
 const winston = require('winston');
 const { combine, timestamp, printf } = winston.format;
 
-const WATCHED_FEEDS = ['http://kotaku.com/vip.xml', 'http://jezebel.com/vip.xml'];
-
 /**
  * Winston config
  */
@@ -26,4 +24,4 @@ winston.configure({
 });
 
 //  Begin watching and retrieving news feeds
-scheduleFeeds(WATCHED_FEEDS);
+scheduleFeeds();
