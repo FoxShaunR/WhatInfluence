@@ -15,6 +15,24 @@ module.exports = {
         createdAt: Sequelize.fn('NOW'),
         updatedAt: Sequelize.fn('NOW'),
       },
+      {
+        name: 'The Verge',
+        url: 'https://www.theverge.com/creators/rss/index.xml',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW'),
+      },
+      {
+        name: 'CNET News',
+        url: 'https://www.cnet.com/rss/news/',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW'),
+      },
+      {
+        name: 'CNET Gaming',
+        url: 'https://www.cnet.com/rss/gaming/',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW'),
+      },
     ], {});
   },
 
