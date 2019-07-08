@@ -11,7 +11,7 @@ const {
   getNewsSources,
 } = require('./adminDB');
 
-const FREQUENCY = 1; // Fetch feed every FREQUENCY minutes
+const { FEEDFETCH_FREQ_MINUTES: FREQUENCY } = process.env;; // Fetch feed every FREQUENCY minutes
 
 // Based on https://github.com/danmactough/node-feedparser/blob/master/examples/compressed.js
 function fetchFeed(feed) {
