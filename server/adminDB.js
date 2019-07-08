@@ -19,5 +19,12 @@ const getNewsSources = async () => {
   };
 };
 
+const updateNewsSource = async (id, data) => {
+  const { news_sources } = require('./sequelize').getSequelize();
+  const source = await news_sources.findByPk(id)
+  return source.update(data);
+};
+
 exports.getNewsSources = getNewsSources;
+exports.updateNewsSource = updateNewsSource;
 exports.addNews = addNews;

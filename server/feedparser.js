@@ -9,6 +9,7 @@ const { getSentiment } = require('./sentiment');
 const {
   addNews,
   getNewsSources,
+  updateNewsSource,
 } = require('./adminDB');
 
 const { FEEDFETCH_FREQ_MINUTES: FREQUENCY } = process.env; // Fetch feed every FREQUENCY minutes
@@ -16,7 +17,7 @@ const { FEEDFETCH_FREQ_MINUTES: FREQUENCY } = process.env; // Fetch feed every F
 // Based on https://github.com/danmactough/node-feedparser/blob/master/examples/compressed.js
 function fetchFeed(feed) {
   // Keep track of the starting date for this fetch iteration
-  const startDate = new Date(feed.lastPub);
+  const startDate = new Date(feed.last_pub);
 
   // Define our streams
   const req = request(feed.url, {timeout: 10000, pool: false});
@@ -52,11 +53,12 @@ function fetchFeed(feed) {
           description,
           summary,
           link,
-          pubDate,
           title,
         } = post;
-        if (new Date(feed.lastPub) < new Date(pubDate)) {
-          feed.lastPub = post.pubDate;
+        const pubDate = new Date(post.pubDate);
+        if (new Date(feed.last_pub) < pubDate) {
+          feed.last_pub = pubDate;
+          updateNewsSource(feed.source_id, { last_pub: pubDate });
         }
         const cleanDesc = description.replace(/<.*?>/g, '');
         const sentiment = getSentiment(`${title}. ${cleanDesc}`);
@@ -129,7 +131,7 @@ const scheduleFeeds = async () => {
     source_id: feed.id,
     name: feed.name,
     url: feed.url,
-    lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)),
+    last_pub: feed.last_pub || new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)),
   }));
   winston.info(`Scheduling feeds every ${FREQUENCY || 60} minutes`);
   // http://openjs.com/scripts/jslibrary/demos/crontab.php

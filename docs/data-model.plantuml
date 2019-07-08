@@ -28,6 +28,7 @@ Table(news_sources, "news_sources\nExternal news sources") {
   primary_key(id) INT,
   name TEXT,
   url TEXT,
+  last_pub DATE,
 }
 
 Table(influencers, "influencers\nTracked influencers") {
