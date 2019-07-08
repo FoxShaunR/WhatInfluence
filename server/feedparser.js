@@ -11,7 +11,7 @@ const {
   getNewsSources,
 } = require('./adminDB');
 
-const { FEEDFETCH_FREQ_MINUTES: FREQUENCY } = process.env;; // Fetch feed every FREQUENCY minutes
+const { FEEDFETCH_FREQ_MINUTES: FREQUENCY } = process.env; // Fetch feed every FREQUENCY minutes
 
 // Based on https://github.com/danmactough/node-feedparser/blob/master/examples/compressed.js
 function fetchFeed(feed) {
@@ -131,7 +131,7 @@ const scheduleFeeds = async () => {
     url: feed.url,
     lastPub: new Date(Date.now() - (1000 * 60 * 60 * 24 * 2)),
   }));
-  winston.info(`Scheduling feeds every ${FREQUENCY} minutes`);
+  winston.info(`Scheduling feeds every ${FREQUENCY || 60} minutes`);
   // http://openjs.com/scripts/jslibrary/demos/crontab.php
   cron.schedule(`*/${FREQUENCY} * * * *`, () => {
     Promise.all(feedObjs.map(async feed => {
