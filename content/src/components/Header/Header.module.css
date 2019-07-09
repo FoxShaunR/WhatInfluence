@@ -1,5 +1,5 @@
 .main {
-  padding: 16px 18px;
+  padding: 16px 30px;
   height: 82px;
   box-sizing: border-box;
   display: flex;
@@ -8,4 +8,9 @@
   justify-content: space-between;
   background-color: #E20606;
   box-shadow: 0 2px 1px #c9c9c9;
+}
+
+.logo {
+  width: 279px;
+  height: 73px;
 }
