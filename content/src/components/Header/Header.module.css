@@ -14,3 +14,16 @@
   width: 279px;
   height: 73px;
 }
+
+@media (max-width: 720px) {
+  .logo {
+    display: none;
+  }
+}
+
+@media (max-width: 440px) {
+  .main {
+    padding: 20px 10px;
+    height: 60px;
+  }
+}

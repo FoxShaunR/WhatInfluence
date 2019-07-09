@@ -7,7 +7,7 @@ import styles from './Header.module.css';
 const Header = () => {
   return (
     <div className={styles.main}>
-      <img className={styles.logo} src={Logo} />
+      <img alt="What Influence Logo" className={styles.logo} src={Logo} />
       <Search />
     </div>
   );
