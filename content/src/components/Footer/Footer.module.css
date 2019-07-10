@@ -1,0 +1,42 @@
+.main {
+  height: 62px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #E20606;
+}
+
+.mission,
+.contact {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #F0EDE9;
+  outline-color: #f05e5e;
+}
+
+.mission {
+  margin-left: auto;
+}
+
+.contact {
+  margin-left: 38px;
+  margin-right: auto;
+}
+
+@media (max-width: 720px) {
+  .main {
+    height: 42px;
+    padding-top: 12px;
+    justify-content: space-evenly;
+  }
+
+  .mission,
+  .contact {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 16px;
+  }
+}
