@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  border: .65px solid #AB0909;
+  border-radius: 3px;
+  background-color: #F0EDE9;
+}
+
+.titleRow {
+  margin: 0 4px;
+  padding: 10px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+  border-bottom: .65px solid #AB0909;
+}
+
+.content {
+  padding: 38px 40px 38px 42px;
+}
