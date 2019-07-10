@@ -1,7 +1,7 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import MediaQuery from 'react-responsive'
+import MediaQuery from 'react-responsive';
 
 import styles from './Search.module.css';
 

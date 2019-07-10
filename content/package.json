@@ -26,6 +26,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "tsc-check": "tsc --noEmit",
+    "tslint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "eslint": "eslint src",
+    "stylelint": "stylelint 'src/**/*.css'",
+    "lint": "yarn stylelint && yarn tslint && yarn tsc-check",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
@@ -53,6 +58,10 @@
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
     "@types/storybook__addon-knobs": "^5.0.2",
-    "@types/storybook__react": "^4.0.2"
+    "@types/storybook__react": "^4.0.2",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "tslint": "^5.18.0",
+    "tslint-react": "^4.0.0"
   }
 }

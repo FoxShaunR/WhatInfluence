@@ -1,9 +1,9 @@
 .main {
   display: flex;
   flex-direction: column;
-  border: .65px solid #AB0909;
+  border: 0.65px solid #ab0909;
   border-radius: 3px;
-  background-color: #F0EDE9;
+  background-color: #f0ede9;
 }
 
 .titleRow {
@@ -11,7 +11,7 @@
   padding: 10px;
   font-family: 'Work Sans', sans-serif;
   font-size: 18px;
-  border-bottom: .65px solid #AB0909;
+  border-bottom: 0.65px solid #ab0909;
 }
 
 .content {

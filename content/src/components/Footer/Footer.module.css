@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  background-color: #E20606;
+  background-color: #e20606;
 }
 
 .mission,
@@ -13,7 +13,7 @@
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
-  color: #F0EDE9;
+  color: #f0ede9;
   outline-color: #f05e5e;
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import styles from './ViewContainer.module.css';
 
@@ -9,8 +9,8 @@ interface IViewContainer {
 
 const ViewContainer = ({
   title,
-  children
-}:IViewContainer) => {
+  children,
+}: IViewContainer) => {
   return (
     <div className={styles.main}>
       {title && (
@@ -23,6 +23,6 @@ const ViewContainer = ({
       </div>
     </div>
   );
-}
+};
 
 export default ViewContainer;
