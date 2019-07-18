@@ -33,7 +33,7 @@ const NewsItem = ({
     <div className={styles.main}>
       <div className={styles.headerRow}>
         {/* TODO: update to icon based on source */}
-        <FontAwesomeIcon icon={faNewspaper} size="4x" />
+        <FontAwesomeIcon className={styles.icon} icon={faNewspaper} size="4x" />
         <div className={styles.nameGroup}>
           <div className={styles.name}>{fullname}</div>
           <div className={styles.handle}>{handle}</div>

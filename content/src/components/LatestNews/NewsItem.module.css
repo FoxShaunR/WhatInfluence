@@ -12,8 +12,8 @@
 }
 
 .nameGroup {
-  height: 60px;
-  padding-left: 22px;
+  height: 44px;
+  padding: 8px 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,4 +51,8 @@
 
 .description {
   font-size: 16px;
+}
+
+.icon {
+  color: #272727;
 }
