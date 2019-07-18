@@ -14,7 +14,7 @@ const LatestNews = ({
   return (
     <div className={styles.main}>
       <ViewContainer title="Latest News">
-      {newsItems && newsItems.map((item, i) => <NewsItem key={`newsItem${i}`} {...item} />)}
+        {newsItems && newsItems.map((item, i) => <NewsItem key={`newsItem${i}`} {...item} />)}
       </ViewContainer>
     </div>
   );
