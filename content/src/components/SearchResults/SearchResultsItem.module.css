@@ -1,0 +1,23 @@
+.main {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.name,
+.handle {
+  font-family: 'Work Sans', sans-serif;
+  line-height: 19px;
+  color: #272727;
+}
+
+.name {
+  margin-left: 40px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.handle {
+  margin-left: auto;
+}
