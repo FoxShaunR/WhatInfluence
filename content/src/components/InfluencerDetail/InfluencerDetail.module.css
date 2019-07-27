@@ -1,0 +1,77 @@
+.main {
+  display: block;
+  padding: 42px 103px;
+}
+
+.topRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.topRight {
+  display: flex;
+  flex-direction: column;
+  padding-left: 41px;
+}
+
+.imageGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.image,
+.missingImage {
+  height: 349px;
+  width: 290px;
+}
+
+.image {
+  object-fit: scale-down;
+  object-position: 0;
+}
+
+.missingImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  border: solid 1px #e20606;
+  background-color: #c4c4c4;
+  color: #f0ede9;
+}
+
+.imageAttrib {
+  width: 290px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 12px;
+}
+
+.main h1,
+.main h2 {
+  margin: 0;
+  font-family: 'Work Sans', sans-serif;
+  color: #272727;
+}
+
+.main h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.main h2 {
+  font-weight: normal;
+  margin-bottom: 19px;
+}
+
+.linkItem {
+  margin-bottom: 9px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.linkValue {
+  font-weight: normal;
+}
