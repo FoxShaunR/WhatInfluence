@@ -6,11 +6,11 @@ import { storiesOf } from '@storybook/react';
 
 const SEARCH_RESULTS_ITEMS = [
   {
-    fullname: 'Some Person',
+    full_name: 'Some Person',
     handle: 'IG: SomePerson',
   },
   {
-    fullname: 'Another Person',
+    full_name: 'Another Person',
     handle: 'IG: TwitchHandle',
   },
 ];
