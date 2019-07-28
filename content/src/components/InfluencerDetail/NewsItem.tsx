@@ -7,8 +7,10 @@ import styles from './NewsItem.module.css';
 const NewsItem = ({
   title,
   pubdate,
-  description,
+  description = '',
+  link,
   sentiment = 0,
+  source,
 }: INews) => {
   return (
     <div className={styles.main}>
@@ -27,7 +29,8 @@ const NewsItem = ({
         {pubdate && <span className={styles.date}>{formatDate(new Date(pubdate))}</span>}
       </div>
       <p className={styles.description}>
-        {description}
+        {description.substr(0, 260)}
+        <a target="_blank" className={styles.link} href={link}> - {source}</a>
       </p>
     </div>
   );

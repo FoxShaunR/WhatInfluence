@@ -24,12 +24,19 @@
   color: #272727;
 }
 
-.description {
-  max-height: 34px;
+.description,
+.link {
+  max-height: 54px;
   margin: 6px 0 20px;
   padding-left: 4px;
   font-family: 'Work Sans', sans-serif;
   font-size: 14px;
+  line-height: 1.22;
   overflow: hidden;
   color: #272727;
+}
+
+.link {
+  margin-left: 4px;
+  color: -webkit-link;
 }
