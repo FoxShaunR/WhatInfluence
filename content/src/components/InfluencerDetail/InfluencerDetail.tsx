@@ -16,9 +16,13 @@ const getDisplayLink = (label: string, display?: string, url?: string)  => {
   return (
     <div className={styles.linkItem} key={key}>
       {(display || url) && `${label}: `}
-      {(display && url) && <a className={styles.linkValue} href={url}>{display}</a>}
+      {(display && url) && (
+        <a rel="noopener noreferrer" target="_blank" className={styles.linkValue} href={url}>{display}</a>
+      )}
       {(display && !url) && <span className={styles.linkValue}>{display}</span>}
-      {(!display && url) &&  <a className={styles.linkValue} href={url}>{url}</a>}
+      {(!display && url) &&  (
+        <a rel="noopener noreferrer" target="_blank" className={styles.linkValue} href={url}>{url}</a>
+      )}
     </div>
   );
 };
