@@ -30,7 +30,7 @@ const NewsItem = ({
       </div>
       <p className={styles.description}>
         {description.substr(0, 260)}
-        <a target="_blank" className={styles.link} href={link}> - {source}</a>
+        <a rel="noopener noreferrer" target="_blank" className={styles.link} href={link}> - {source}</a>
       </p>
     </div>
   );
