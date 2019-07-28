@@ -1,12 +1,9 @@
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { formatDate } from '../common/helpers';
 
 import styles from './NewsItem.module.css';
-
-const formatDate = (date?: Date) => (
-  date ? new Date(date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '- -'
-);
 
 export interface INewsItem {
   fullname: string;

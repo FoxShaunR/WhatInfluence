@@ -1,5 +1,6 @@
 import React from 'react';
 import InfluencerDetail from './InfluencerDetail';
+import NewsItem from './NewsItem';
 
 import { storiesOf } from '@storybook/react';
 
@@ -29,6 +30,61 @@ const INFLUENCER = {
   primary_display: 'PewDiePie',
 };
 
+const NEWS_ITEMS = [
+  {
+    title: 'Tiny Little GameCube Works, Is Asking To Get Its Cheeks Pinched',
+    description: `When Nintendo gets around to releasing a GameCube Mini—remember, all tiny console releases
+    to this point have been mere preparation for what will be the greatest collection of 20-30 titles in video
+    game history—I really hope it’s as small and cute as this custom-made console.Read more...`,
+    link: 'https://kotaku.com/tiny-little-gamecube-works-is-asking-to-get-its-cheeks-1834968740',
+    author: 'Luke Plunkett',
+    source: 'Kotaku',
+    pubdate: '2019-05-23T18:30:00-07:00',
+    sentiment: 10,
+  },
+  {
+    title: 'Tiny Little GameCube Works, Is Asking To Get Its Cheeks Pinched',
+    description: `When Nintendo gets around to releasing a GameCube Mini—remember, all tiny console releases
+    to this point have been mere preparation for what will be the greatest collection of 20-30 titles in video
+    game history—I really hope it’s as small and cute as this custom-made console.Read more...`,
+    link: 'https://kotaku.com/tiny-little-gamecube-works-is-asking-to-get-its-cheeks-1834968740',
+    author: 'Luke Plunkett',
+    source: 'Kotaku',
+    pubdate: '2019-05-23T18:30:00-07:00',
+    sentiment: 5,
+  },
+  {
+    title: 'Pokemon Duel mobile game is shutting down     - CNET',
+    description: `You can spend your gems until the service ends on Oct. 31.`,
+    link: 'https://kotaku.com/tiny-little-gamecube-works-is-asking-to-get-its-cheeks-1834968740',
+    author: 'Corinne Reichert',
+    source: 'CNET',
+    pubdate: '2019-07-26T15:56:06-07:00',
+    sentiment: 0,
+  },
+  {
+    title: 'Pokemon Duel mobile game is shutting down     - CNET',
+    description: `You can spend your gems until the service ends on Oct. 31.`,
+    link: 'https://kotaku.com/tiny-little-gamecube-works-is-asking-to-get-its-cheeks-1834968740',
+    author: 'Corinne Reichert',
+    source: 'CNET',
+    pubdate: '2019-07-26T15:56:06-07:00',
+    sentiment: -5,
+  },
+  {
+    title: 'Pokemon Duel mobile game is shutting down     - CNET',
+    description: `You can spend your gems until the service ends on Oct. 31.`,
+    link: 'https://kotaku.com/tiny-little-gamecube-works-is-asking-to-get-its-cheeks-1834968740',
+    author: 'Corinne Reichert',
+    source: 'CNET',
+    pubdate: '2019-07-26T15:56:06-07:00',
+    sentiment: -10,
+  },
+];
+
 storiesOf('InfluencerDetail', module)
   .add('display', () => <InfluencerDetail />)
-  .add('with all props', () => <InfluencerDetail {...INFLUENCER} />);
+  .add('with all props', () => <InfluencerDetail {...INFLUENCER} news={NEWS_ITEMS} />);
+
+storiesOf('InfluencerDetail/NewsItem', module)
+  .add('display', () => <NewsItem {...NEWS_ITEMS[0]} />);

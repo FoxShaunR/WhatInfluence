@@ -6,4 +6,5 @@ export interface INews {
   source?: string;
   pubdate?: string;
   summary?: string;
+  sentiment?: number;
 }

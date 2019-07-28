@@ -11,7 +11,7 @@
 .topRight {
   display: flex;
   flex-direction: column;
-  padding-left: 41px;
+  padding-left: 30px;
 }
 
 .imageGroup {
@@ -45,7 +45,7 @@
 .imageAttrib {
   width: 290px;
   font-family: 'Work Sans', sans-serif;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .main h1,
@@ -62,11 +62,12 @@
 
 .main h2 {
   font-weight: normal;
-  margin-bottom: 19px;
+  margin-top: 4px;
+  margin-bottom: 16px;
 }
 
 .linkItem {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 18px;
@@ -74,4 +75,12 @@
 
 .linkValue {
   font-weight: normal;
+}
+
+.titleRow {
+  margin: 12px 0;
+  padding: 10px 0 2px 4px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  border-bottom: 0.65px solid #ab0909;
 }
