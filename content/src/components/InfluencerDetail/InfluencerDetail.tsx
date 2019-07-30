@@ -1,8 +1,8 @@
 import uniqueId from 'lodash/uniqueId';
 import React from 'react';
 import { prepInfluencerLinks } from '../../common/data';
-import { IInfluencer } from '../types/influencer';
-import { INews } from '../types/news';
+import { IInfluencer } from '../../types/influencer';
+import { INews } from '../../types/news';
 import ViewContainer from '../ViewContainer/ViewContainer';
 import styles from './InfluencerDetail.module.css';
 import NewsItem from './NewsItem';

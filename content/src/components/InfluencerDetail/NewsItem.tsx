@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatDate } from '../../common/helpers';
-import { INews } from '../types/news';
+import { INews } from '../../types/news';
 
 import styles from './NewsItem.module.css';
 
