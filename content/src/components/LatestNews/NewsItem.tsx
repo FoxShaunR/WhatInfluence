@@ -1,7 +1,7 @@
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { formatDate } from '../common/helpers';
+import { formatDate } from '../../common/helpers';
 
 import styles from './NewsItem.module.css';
 

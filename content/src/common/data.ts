@@ -1,4 +1,4 @@
-import { IInfluencer } from '../types/influencer';
+import { IInfluencer } from '../components/types/influencer';
 
 const getLinkObj = (label: string, display?: string, uri?: string) => ({
   display,

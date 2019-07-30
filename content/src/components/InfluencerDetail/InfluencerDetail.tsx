@@ -1,6 +1,6 @@
 import uniqueId from 'lodash/uniqueId';
 import React from 'react';
-import { prepInfluencerLinks } from '../common/data';
+import { prepInfluencerLinks } from '../../common/data';
 import { IInfluencer } from '../types/influencer';
 import { INews } from '../types/news';
 import ViewContainer from '../ViewContainer/ViewContainer';
