@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/images/Logo.svg';
+import Logo from '../../assets/images/Logo.svg';
 import Search from './Search';
 
 import styles from './Header.module.css';
