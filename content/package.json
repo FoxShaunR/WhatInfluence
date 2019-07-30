@@ -16,6 +16,7 @@
     "@types/react-router-dom": "^4.3.4",
     "babel-loader": "8.0.5",
     "lodash": "^4.17.15",
+    "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-fontawesome": "^1.6.1",

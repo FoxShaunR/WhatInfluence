@@ -10,17 +10,17 @@ import SearchResults from './components/SearchResults/SearchResults';
 
 const App: React.FC = () => {
   return (
+    <div className={styles.App}>
     <Router>
-      <div className={styles.App}>
-        <Header />
+      <Header />
           <Switch>
             <Route exact path="/" component={LatestNews} />
             <Route path="/mission" component={Mission} />
             <Route path="/search" component={SearchResults} />
           </Switch>
         <Footer />
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 };
 
