@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "add-migration": "npx sequelize-cli migration:generate --name ",
     "migrate": "npx sequelize-cli db:migrate",
     "seed": "npx sequelize-cli db:seed:all"
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.0.0",
+    "express": "^4.17.1",
     "feedparser": "^2.2.9",
     "iconv": "^2.3.4",
     "node-cron": "^2.0.3",

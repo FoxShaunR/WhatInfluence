@@ -1,4 +1,6 @@
 'use strict';
+const { Op } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   const news = sequelize.define('news', {
     title: DataTypes.TEXT,
@@ -21,8 +23,40 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
   });
-  // news.associate = function(models) {
-  //   // associations can be defined here
-  // };
+  news.associate = function(models) {
+    news.belongsTo(models.news_sources, {
+      foreignKey: 'source_id',
+    });
+
+    news.belongsToMany(models.influencers, {
+      through: 'influencer_news',
+      foreignKey: 'news_id',
+      otherKey: 'influencer_id',
+    });
+
+    news.addScope('withInfluencerName', {
+      include: [{
+        model: models.influencers,
+        attributes: ['id', 'full_name'],
+        required: true,
+      }],
+    });
+
+    news.addScope('withSourceName', {
+      include: [{
+        model: models.news_sources,
+        attributes: ['id', 'name'],
+        required: true,
+      }],
+    });
+
+    news.getLatestInfluencerNews = () => news
+      .scope(
+        'withInfluencerName',
+        'withSourceName',
+      ).findAndCountAll({
+        order: sequelize.col('createdAt', 'DESC'),
+      });
+  };
   return news;
 };

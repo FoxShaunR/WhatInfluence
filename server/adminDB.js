@@ -6,6 +6,15 @@ const addNews = async (data) => {
   return sequelize.news.create(data);
 };
 
+const getLatestNews = async () => {
+  const { news } = require('./sequelize').getSequelize();
+  const { rowCount, rows } = await news.getLatestInfluencerNews();
+  return {
+    rowCount,
+    data: rows.map(r => r.get({ plain: true })),
+  };
+}
+
 /**
  * news_sources
  */
@@ -26,5 +35,6 @@ const updateNewsSource = async (id, data) => {
 };
 
 exports.getNewsSources = getNewsSources;
+exports.getLatestNews = getLatestNews;
 exports.updateNewsSource = updateNewsSource;
 exports.addNews = addNews;
