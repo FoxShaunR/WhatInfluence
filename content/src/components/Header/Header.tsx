@@ -15,7 +15,7 @@ const Header = ({
       history.push(`/search?query=${searchText}`);
     },
     [history, searchText],
-  )
+  );
   return (
     <div className={styles.main}>
       <Link to="/">
