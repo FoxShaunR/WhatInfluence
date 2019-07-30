@@ -1,25 +1,26 @@
 import React from 'react';
-import './App.css';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import styles from './App.module.css';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import LatestNews from './components/LatestNews/LatestNews';
+import Mission from './components/Mission/Mission';
+import SearchResults from './components/SearchResults/SearchResults';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className={styles.App}>
+        <Header />
+          <Switch>
+            <Route exact path="/" component={LatestNews} />
+            <Route path="/mission" component={Mission} />
+            <Route path="/search" component={SearchResults} />
+          </Switch>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
