@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     news.addScope('withInfluencerName', {
       include: [{
         model: models.influencers,
-        attributes: ['id', 'full_name'],
+        attributes: ['id', 'full_name', 'primary_display', 'primary_uri'],
         required: true,
       }],
     });
