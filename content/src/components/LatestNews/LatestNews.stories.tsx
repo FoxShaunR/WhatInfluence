@@ -11,11 +11,18 @@ const NEWS_ITEMS = [
     handheld games experiment from Firewatch publisher Panic. More than anything, it’s weird: A small,
     single-purpose handheld with a set 12-week program of mystery games is the sort of thing that
     demands your attention. And yes, it has…Read more...`,
-    fullname: 'Some Person',
-    handle: 'InstaPerson',
+    influencers: [
+      {
+        fullname: 'Some Person',
+        primary_display: 'InstaPerson',
+      },
+    ],
     link: 'https://kotaku.com/video-games-should-be-weirder-1834991545',
-    pubdate: new Date('2019-02-02'),
-    source_name: 'Kotaku',
+    news_source: {
+      id: 0,
+      name: 'Kotaku',
+    },
+    pubdate: '2019-02-02',
     title: 'Video Games Should Be Weirder',
   },
   {
@@ -23,11 +30,18 @@ const NEWS_ITEMS = [
     shared by Tercius to Kotaku`,
     description: `An Amazon shirt sale, robovacs, citronella candles, and Civilization VI discount lead off
     Sunday’s best deals from around the web.Read more...`,
-    fullname: 'Another Person',
-    handle: 'TwitchPerson',
+    influencers: [
+      {
+        fullname: 'Another Person',
+        primary_display: 'TwitchPerson',
+      },
+    ],
     link: 'https://kinjadeals.theinventory.com/sundays-best-deals-nest-thermostat-herschel-duffel-ba-1836156071',
-    pubdate: new Date('2019-02-05'),
-    source_name: 'Kotaku',
+    news_source: {
+      id: 0,
+      name: 'Kotaku',
+    },
+    pubdate: '2019-02-05',
     title: 'Sundays Best Deals: Nest Thermostat, Herschel Duffel Bag, Crash Bandicoot, Echo Speakers, and More',
   },
 ];

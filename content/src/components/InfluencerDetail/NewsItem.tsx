@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatDate } from '../../common/helpers';
-import { INews } from '../../types/news';
+import { INewsWithSource } from '../../types/news';
 
 import styles from './NewsItem.module.css';
 
@@ -10,8 +10,9 @@ const NewsItem = ({
   description = '',
   link,
   sentiment = 0,
-  source,
-}: INews) => {
+  news_source = { id: 0, name: ''},
+}: INewsWithSource) => {
+  const { name } = news_source;
   return (
     <div className={styles.main}>
       <div className={styles.row}>
@@ -30,7 +31,7 @@ const NewsItem = ({
       </div>
       <p className={styles.description}>
         {description.substr(0, 260)}
-        <a rel="noopener noreferrer" target="_blank" className={styles.link} href={link}> - {source}</a>
+        <a rel="noopener noreferrer" target="_blank" className={styles.link} href={link}> - {name}</a>
       </p>
     </div>
   );

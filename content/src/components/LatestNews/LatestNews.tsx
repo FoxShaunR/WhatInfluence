@@ -1,11 +1,12 @@
 import React from 'react';
+import { ILatestNewsItem } from '../../types/news';
 import ViewContainer from '../ViewContainer/ViewContainer';
-import NewsItem, { INewsItem } from './NewsItem';
+import NewsItem from './NewsItem';
 
 import styles from './LatestNews.module.css';
 
 interface ILatestNews {
-  newsItems?: INewsItem[];
+  newsItems?: ILatestNewsItem[];
 }
 
 const LatestNews = ({
