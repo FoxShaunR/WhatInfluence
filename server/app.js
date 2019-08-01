@@ -3,8 +3,16 @@ const { scheduleFeeds } = require('./feedparser');
 const winston = require('winston');
 const express = require('express');
 const { contentApp } = require('./content');
+const cors = require('cors')({
+  origin: true,
+  allowedHeaders: 'Content-Range,Content-Type,Authorization',
+  exposedHeaders: 'Content-Range',
+});
 
 const app = express();
+
+app.use(cors);
+
 const { EXPRESS_PORT = 3000 } = process.env;
 
 /**
