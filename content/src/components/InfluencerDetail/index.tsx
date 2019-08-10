@@ -4,8 +4,12 @@ import {
   RouteComponentProps,
   withRouter,
 } from 'react-router-dom';
-import { getInfluencer } from '../../actions/actions';
+import {
+  getInfluencer,
+  getInfluencerNewsById,
+} from '../../actions/actions';
 import { IInfluencer } from '../../types/influencer';
+import { ILatestNewsItem } from '../../types/news';
 import InfluencerDetail from './InfluencerDetail';
 
 const InfluencerDetailController = ({
@@ -13,17 +17,25 @@ const InfluencerDetailController = ({
 }: RouteComponentProps) => {
   const id = get(match, 'params.id');
   const [influencer, setInfluencer] = React.useState({} as IInfluencer);
-  const getNews = async () => {
-    if (id) {
-      const results = await getInfluencer(id);
-      setInfluencer(results);
-    }
-  };
+  const [news, setNews] = React.useState([] as ILatestNewsItem[]);
+  const getData = React.useCallback(
+    async () => {
+      if (id) {
+        const [inf, nw] = await Promise.all([
+          getInfluencer(id),
+          getInfluencerNewsById(id),
+        ]);
+        setInfluencer(inf);
+        setNews(nw);
+      }
+    },
+    [id],
+  );
   React.useEffect(() => {
-    getNews();
-  }, [id]);
+    getData();
+  }, [id, getData]);
   return (
-    <InfluencerDetail {...influencer} />
+    <InfluencerDetail {...influencer} news={news} />
   );
 };
 

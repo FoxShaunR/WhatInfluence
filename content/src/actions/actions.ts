@@ -28,3 +28,15 @@ export const getInfluencer = async (id: string): Promise<IInfluencer> =>  {
   }
   return data || {};
 };
+
+export const getInfluencerNewsById = async (id: string): Promise<ILatestNewsItem[]> =>  {
+  let data = [];
+  try {
+    const result = await fetch(`${API_INFLUENCER_URL}/${id}/news`);
+    ({ data } = await result.json());
+  } catch (error) {
+    // tslint:disable-next-line: no-console
+    console.error(error);
+  }
+  return data || [];
+};
