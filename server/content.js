@@ -21,14 +21,15 @@ contentApp.get('/influencer/:id', async (req, res) => {
   res.status(200).json(await influencers.findByPk(id));
 });
 
-// contentApp.get('/influencer/:id/news', async (req, res) => {
-//   const { news } = require('./sequelize').getSequelize();
-//   const { rowCount, rows } = await news.getLatestInfluencerNews();
-//   res.status(200).json({
-//     rowCount,
-//     data: rows.map(r => r.get({ plain: true })),
-//   });
-// });
+contentApp.get('/influencer/:id/news', async (req, res) => {
+  const { news } = require('./sequelize').getSequelize();
+  const { id } = req.params;
+  const { rowCount, rows } = await news.getNewsByInfluencerId(id);
+  res.status(200).json({
+    rowCount,
+    data: rows.map(r => r.get({ plain: true })),
+  });
+});
 
 
 exports.contentApp = contentApp;

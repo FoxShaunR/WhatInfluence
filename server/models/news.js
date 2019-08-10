@@ -57,6 +57,20 @@ module.exports = (sequelize, DataTypes) => {
       ).findAndCountAll({
         order: sequelize.col('createdAt', 'DESC'),
       });
+
+    news.getNewsByInfluencerId = (id) => news
+      .scope(
+        'withSourceName',
+      ).findAndCountAll({
+        include: [{
+          model: models.influencers,
+          attributes: ['id'],
+          where: {
+            id,
+          }
+        }],
+        order: sequelize.col('createdAt', 'DESC'),
+      });
   };
   return news;
 };
