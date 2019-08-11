@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import styles from './App.module.css';
+import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import InfluencerDetail from './components/InfluencerDetail';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             <Route path="/mission" component={Mission} />
             <Route path="/search" component={SearchResults} />
             <Route path="/influencer/:id" component={InfluencerDetail} />
+            <Route path="/contact" component={Contact} />
           </Switch>
         <Footer />
       </Router>

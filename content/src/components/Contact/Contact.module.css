@@ -1,0 +1,23 @@
+.main {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 640px;
+  padding: 28px 35px 28px 31px;
+}
+
+.form {
+  width: 100%;
+  max-width: 640px;
+  height: 772px;
+}
+
+@media (max-width: 440px) {
+  .main {
+    padding: 28px 0;
+  }
+
+  .form {
+    height: 940px;
+  }
+}
