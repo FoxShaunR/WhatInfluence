@@ -11,6 +11,7 @@ const Contact = () => {
     <div className={styles.main}>
       <ViewContainer>
         <iframe
+          title="Contact form"
           className={styles.form}
           src={FORM_URL}
           marginHeight={0}
