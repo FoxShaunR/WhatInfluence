@@ -1,4 +1,5 @@
 import React from 'react';
+import TagManager from 'react-gtm-module';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import styles from './App.module.css';
@@ -9,6 +10,14 @@ import InfluencerDetail from './components/InfluencerDetail';
 import LatestNews from './components/LatestNews';
 import Mission from './components/Mission/Mission';
 import SearchResults from './components/SearchResults/SearchResults';
+
+const tagManagerArgs = {
+  gtmId: 'GTM-000000',
+};
+
+if (process.env.NODE_ENV === 'production') {
+  TagManager.initialize(tagManagerArgs);
+}
 
 const App: React.FC = () => {
   return (
