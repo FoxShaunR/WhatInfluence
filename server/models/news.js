@@ -56,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
         'withSourceName',
       ).findAndCountAll({
         order: sequelize.col('createdAt', 'DESC'),
+        limit: 50,
       });
 
     news.getNewsByInfluencerId = (id) => news
