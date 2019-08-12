@@ -1,5 +1,4 @@
 'use strict';
-const { Op } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const news = sequelize.define('news', {

@@ -31,5 +31,15 @@ contentApp.get('/influencer/:id/news', async (req, res) => {
   });
 });
 
+contentApp.get('/findInfluencersByKeyword', async (req, res) => {
+  const { influencers } = require('./sequelize').getSequelize();
+  const { keyword } = req.query;
+  const { rowCount, rows } = await influencers.search(keyword);
+  res.status(200).json({
+    rowCount,
+    data: rows.map(r => r.get({ plain: true })),
+  });
+});
+
 
 exports.contentApp = contentApp;
