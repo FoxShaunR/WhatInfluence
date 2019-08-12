@@ -1,22 +1,23 @@
 import queryString from 'query-string';
 import React from 'react';
+import { IInfluencer } from '../../types/influencer';
 import ViewContainer from '../ViewContainer/ViewContainer';
-import SearchResultsItem, { ISearchResultsItem } from './SearchResultsItem';
+import SearchResultsItem from './SearchResultsItem';
 
 import styles from './SearchResults.module.css';
 
 interface ISearchResults {
-  searchItems: ISearchResultsItem[];
+  searchItems: IInfluencer[];
 }
 
 const SearchResults = ({
   searchItems,
 }: ISearchResults) => {
-  let { query } = queryString.parse(window.location.search);
-  query = Array.isArray(query) ? query[0] : query;
+  let { keyword } = queryString.parse(window.location.search);
+  keyword = Array.isArray(keyword) ? keyword[0] : keyword;
   return (
     <div className={styles.main}>
-      <ViewContainer title={`Search Results - ${query}`}>
+      <ViewContainer title={`Search Results - ${keyword}`}>
         {searchItems && searchItems.map((item, i) => <SearchResultsItem key={`searchItem${i}`} {...item} />)}
       </ViewContainer>
     </div>

@@ -12,7 +12,7 @@ const Header = ({
   const [searchText, setSearchText] = React.useState('');
   const onSearch = React.useCallback(
     () => {
-      history.push(`/search?query=${searchText}`);
+      history.push(`/search?keyword=${searchText}`);
     },
     [history, searchText],
   );

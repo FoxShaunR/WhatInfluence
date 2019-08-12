@@ -9,7 +9,7 @@ import Header from './components/Header/Header';
 import InfluencerDetail from './components/InfluencerDetail';
 import LatestNews from './components/LatestNews';
 import Mission from './components/Mission/Mission';
-import SearchResults from './components/SearchResults/SearchResults';
+import SearchResults from './components/SearchResults';
 
 const tagManagerArgs = {
   gtmId: 'GTM-5KXP9B9',
