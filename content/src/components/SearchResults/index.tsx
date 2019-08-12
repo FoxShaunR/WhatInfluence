@@ -9,13 +9,16 @@ const SearchResultsController = () => {
   keyword = Array.isArray(keyword) ? keyword[0] : keyword;
   const [influencers, setInfluencers] = React.useState([] as IInfluencer[]);
 
-  const getResults = async () => {
-    const results = await findInfluencersByKeyword(keyword);
-    setInfluencers(results);
-  };
+  const getResults = React.useCallback(
+    async () => {
+      const results = await findInfluencersByKeyword(keyword);
+      setInfluencers(results);
+    },
+    [keyword],
+  );
   React.useEffect(() => {
     getResults();
-  }, [keyword]);
+  }, [keyword, getResults]);
   return (
     <SearchResults searchItems={influencers} />
   );
