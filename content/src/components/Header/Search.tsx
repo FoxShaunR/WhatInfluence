@@ -14,8 +14,17 @@ interface ISearch {
 const Search = ({
   onSearchTextChanged,
   searchText = '',
-  onSearch,
+  onSearch = () => undefined,
 }: ISearch) => {
+  const onKeyPress = React.useCallback(
+    (event: any) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        onSearch();
+      }
+    },
+    [onSearch],
+  );
   return (
     <div className={styles.main}>
       <MediaQuery minWidth={721}>
@@ -24,6 +33,7 @@ const Search = ({
           placeholder="Find out..."
           type="text"
           value={searchText}
+          onKeyPress={onKeyPress}
           // tslint:disable-next-line: jsx-no-lambda
           onChange={(val) => onSearchTextChanged && onSearchTextChanged(val.currentTarget.value)}
         />
@@ -34,6 +44,7 @@ const Search = ({
           placeholder="Search for an influencer..."
           type="text"
           value={searchText}
+          onKeyPress={onKeyPress}
           // tslint:disable-next-line: jsx-no-lambda
           onChange={(val) => onSearchTextChanged && onSearchTextChanged(val.currentTarget.value)}
         />
