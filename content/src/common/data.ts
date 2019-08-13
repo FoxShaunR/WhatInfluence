@@ -35,3 +35,19 @@ export const prepInfluencerLinks = ({
   allLinks.push(getLinkObj('Twitter', twitter_display, twitter_uri));
   return allLinks;
 };
+
+export const getPlatformFromURL = (url: string = ''): string => {
+  if (url.toLowerCase().includes('facebook')) {
+    return 'facebook';
+  } else if (url.toLowerCase().includes('instagram')) {
+    return 'instagram';
+  } else if (url.toLowerCase().includes('twitter')) {
+    return 'twitter';
+  } else if (url.toLowerCase().includes('twitch')) {
+    return 'twitch';
+  } else if (url.toLowerCase().includes('youtube')) {
+    return 'youtube';
+  } else    {
+    return 'unknown';
+  }
+};

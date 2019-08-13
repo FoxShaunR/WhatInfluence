@@ -1,7 +1,15 @@
+import {
+  faFacebook,
+  faInstagram,
+  faTwitch,
+  faTwitter,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getPlatformFromURL } from '../../common/data';
 import { formatDate } from '../../common/helpers';
 import { ILatestNewsItem } from '../../types/news';
 
@@ -20,12 +28,28 @@ const NewsItem = ({
     id,
     full_name,
     primary_display,
+    primary_uri,
   } = React.useMemo(() => influencers[0], [influencers]);
+  const icon = React.useMemo(() => {
+    switch (getPlatformFromURL(primary_uri)) {
+      case 'facebook':
+        return faFacebook;
+      case 'instagram':
+          return faInstagram;
+      case 'twitter':
+          return faTwitter;
+      case 'twitch':
+          return faTwitch;
+      case 'youtube':
+          return faYoutube;
+      default:
+        return faNewspaper;
+    }
+  }, [primary_uri]);
   return (
     <div className={styles.main}>
       <div className={styles.headerRow}>
-        {/* TODO: update to icon based on source */}
-        <FontAwesomeIcon className={styles.icon} icon={faNewspaper} size="4x" />
+        <FontAwesomeIcon className={styles.icon} icon={icon} size="4x" />
         <Link to={`/influencer/${id}`} className={styles.nameGroup}>
           <div className={styles.name}>{full_name}</div>
           <div className={styles.handle}>{primary_display}</div>
