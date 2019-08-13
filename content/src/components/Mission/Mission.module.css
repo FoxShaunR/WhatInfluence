@@ -1,5 +1,7 @@
 .main {
-  padding: 28px 35px 28px 31px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 28px 0 28px;
 }
 
 .title {
@@ -15,5 +17,17 @@
 .text {
   font-family: 'Work Sans', sans-serif;
   font-size: 16px;
+  line-height: 1.5;
   color: #272727;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #272727;
+  text-align: center;
 }
