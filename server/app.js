@@ -30,7 +30,10 @@ winston.configure({
     myFormat
   ),
   transports: [
-    new winston.transports.File({ filename: 'feedserver.log' }),
+    new winston.transports.File({
+      filename: 'feedserver.log',
+      level: 'info',
+    }),
     new winston.transports.Console(),
   ]
 });

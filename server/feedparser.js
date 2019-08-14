@@ -73,7 +73,7 @@ function fetchFeed(feed) {
           post,
           sentiment,
         });
-        winston.info(`${pubDate}: ${title}`);
+        winston.debug(`${pubDate}: ${title}`);
       }
     }
   });
@@ -95,7 +95,7 @@ function maybeTranslate (res, charset) {
   if (!iconv && charset && !/utf-*8/i.test(charset)) {
     try {
       iconv = new Iconv(charset, 'utf-8');
-      winston.info('Converting from charset %s to utf-8');
+      winston.debug('Converting from charset %s to utf-8');
       iconv.on('error', done);
       // If we're using iconv, stream will be the output of iconv
       // otherwise it will remain the output of request
@@ -137,7 +137,7 @@ const scheduleFeeds = async () => {
   // http://openjs.com/scripts/jslibrary/demos/crontab.php
   cron.schedule(`*/${FREQUENCY} * * * *`, () => {
     Promise.all(feedObjs.map(async feed => {
-      winston.info(`Fetching ${feed.name}`);
+      winston.debug(`Fetching ${feed.name}`);
       fetchFeed(feed);
     }));
   });
