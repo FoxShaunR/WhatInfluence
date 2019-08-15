@@ -1,16 +1,8 @@
-import {
-  faFacebook,
-  faInstagram,
-  faTwitch,
-  faTwitter,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getPlatformFromURL } from '../../common/data';
 import { formatDate } from '../../common/helpers';
+import { getInfluencerIconFromURL } from '../../common/iconHelpers';
 import { ILatestNewsItem } from '../../types/news';
 
 import styles from './NewsItem.module.css';
@@ -30,22 +22,7 @@ const NewsItem = ({
     primary_display,
     primary_uri,
   } = React.useMemo(() => influencers[0], [influencers]);
-  const icon = React.useMemo(() => {
-    switch (getPlatformFromURL(primary_uri)) {
-      case 'facebook':
-        return faFacebook;
-      case 'instagram':
-          return faInstagram;
-      case 'twitter':
-          return faTwitter;
-      case 'twitch':
-          return faTwitch;
-      case 'youtube':
-          return faYoutube;
-      default:
-        return faNewspaper;
-    }
-  }, [primary_uri]);
+  const icon = React.useMemo(() => getInfluencerIconFromURL(primary_uri), [primary_uri]);
   return (
     <div className={styles.main}>
       <div className={styles.headerRow}>

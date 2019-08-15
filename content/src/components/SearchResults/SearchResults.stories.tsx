@@ -8,10 +8,12 @@ const SEARCH_RESULTS_ITEMS = [
   {
     full_name: 'Some Person',
     handle: 'IG: SomePerson',
+    primary_uri: 'https://www.instagram.com/pewdiepie/',
   },
   {
     full_name: 'Another Person',
     handle: 'IG: TwitchHandle',
+    primary_uri: 'https://twitter.com/pewdiepie',
   },
 ];
 
