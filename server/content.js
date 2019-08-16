@@ -11,6 +11,26 @@ contentApp.get('/latest-news', async (req, res) => {
   });
 });
 
+const QUERY_TRENDING_INFLUENCERS = `
+  SELECT  influencers.id
+  ,full_name
+  ,primary_uri
+  ,primary_display
+  FROM influencers
+      JOIN influencer_news ON influencer_news.influencer_id = influencers.id
+      JOIN news ON news.id = influencer_news.news_id
+  WHERE news.pubdate >= now() - interval '30 day'
+  GROUP BY influencers.id, influencers.full_name, influencers.primary_uri, influencers.primary_display
+  ORDER BY COUNT(news.id);
+`
+
+contentApp.get('/trending-influencers', async (req, res) => {
+  const sequelize = require('./sequelize').getSequelize();
+  const [data, meta] = await sequelize.query(QUERY_TRENDING_INFLUENCERS);
+  const { rowCount } = meta;
+  res.status(200).json({ rowCount, data });
+});
+
 contentApp.get('/influencer/:id', async (req, res) => {
   const { id } = req.params;
   if (!id) {
