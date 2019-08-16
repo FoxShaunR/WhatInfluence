@@ -1,4 +1,5 @@
 .main {
-  display: block;
+  display: flex;
+  flex-direction: row;
   padding: 42px 60px;
 }

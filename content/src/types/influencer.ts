@@ -22,3 +22,5 @@ export interface IInfluencer {
   primary_uri?: string;
   primary_display?: string;
 }
+
+export type TPartialInfluencer = Pick<IInfluencer, 'id' | 'full_name' | 'primary_display' | 'primary_uri'>;

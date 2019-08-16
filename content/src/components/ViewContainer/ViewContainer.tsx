@@ -5,14 +5,16 @@ import styles from './ViewContainer.module.css';
 interface IViewContainer {
   title?: string;
   children?: JSX.Element | JSX.Element[];
+  style?: React.CSSProperties;
 }
 
 const ViewContainer = ({
   title,
   children,
+  style,
 }: IViewContainer) => {
   return (
-    <div className={styles.main}>
+    <div className={styles.main} style={style}>
       {title && (
         <div className={styles.titleRow}>
           {title}

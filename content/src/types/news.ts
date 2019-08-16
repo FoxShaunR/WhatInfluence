@@ -1,4 +1,4 @@
-import { IInfluencer} from './influencer';
+import { TPartialInfluencer } from './influencer';
 
 export interface INews {
   title?: string;
@@ -19,7 +19,6 @@ export interface INewsWithSource extends INews {
   news_source?: INewsSource;
 }
 
-type TPartialInfluencer = Pick<IInfluencer, 'id' | 'full_name' | 'primary_display' | 'primary_uri'>;
 export interface ILatestNewsItem extends INews {
   news_source?: INewsSource;
   influencers: TPartialInfluencer[];

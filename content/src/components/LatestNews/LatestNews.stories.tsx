@@ -1,4 +1,5 @@
 import React from 'react';
+import InfluencerItem from './InfluencerItem';
 import LatestNews from './LatestNews';
 import NewsItem from './NewsItem';
 
@@ -13,8 +14,9 @@ const NEWS_ITEMS = [
     demands your attention. And yes, it has…Read more...`,
     influencers: [
       {
-        fullname: 'Some Person',
+        full_name: 'Some Person',
         primary_display: 'InstaPerson',
+        primary_uri: 'https://www.twitch.com/pewdiepie/',
       },
     ],
     link: 'https://kotaku.com/video-games-should-be-weirder-1834991545',
@@ -32,8 +34,9 @@ const NEWS_ITEMS = [
     Sunday’s best deals from around the web.Read more...`,
     influencers: [
       {
-        fullname: 'Another Person',
+        full_name: 'Another Person',
         primary_display: 'TwitchPerson',
+        primary_uri: 'https://www.instagram.com/pewdiepie/',
       },
     ],
     link: 'https://kinjadeals.theinventory.com/sundays-best-deals-nest-thermostat-herschel-duffel-ba-1836156071',
@@ -46,9 +49,26 @@ const NEWS_ITEMS = [
   },
 ];
 
+const INFLUENCER_ITEMS = [
+  {
+    full_name: 'Some Person',
+    primary_display: 'IG: SomePerson',
+    primary_uri: 'https://www.instagram.com/pewdiepie/',
+  },
+  {
+    full_name: 'Another Person',
+    primary_display: 'IG: TwitchHandle',
+    primary_uri: 'https://www.facebook.com/pewdiepie/',
+  },
+];
+
 storiesOf('LatestNews', module)
   .add('display', () => <LatestNews />)
-  .add('with news items', () => <LatestNews newsItems={NEWS_ITEMS} />);
+  .add('with news items', () => <LatestNews newsItems={NEWS_ITEMS} />)
+  .add('with trending influencers', () => <LatestNews trendingInfluencers={INFLUENCER_ITEMS} />);
 
 storiesOf('LatestNews/NewsItem', module)
   .add('display', () => <NewsItem {...NEWS_ITEMS[0]} />);
+
+storiesOf('LatestNews/InfluencerItem', module)
+  .add('display', () => <InfluencerItem {...INFLUENCER_ITEMS[0]} />);
