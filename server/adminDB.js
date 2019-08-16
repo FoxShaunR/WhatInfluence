@@ -2,8 +2,17 @@
  * news
  */
 const addNews = async (data) => {
-  const sequelize = require('./sequelize').getSequelize();
-  return sequelize.news.create(data);
+  const {
+    link,
+    ...rest
+  } = data;
+  const { news } = require('./sequelize').getSequelize();
+  return news.findOrCreate({
+    where: {
+      link,
+    },
+    defaults: rest,
+  });
 };
 
 /**
@@ -11,8 +20,8 @@ const addNews = async (data) => {
  */
 
 const getNewsSources = async () => {
-  const sequelize = require('./sequelize').getSequelize();
-  const { rowCount, rows } = await sequelize.news_sources.findAndCountAll();
+  const { news_sources } = require('./sequelize').getSequelize();
+  const { rowCount, rows } = await news_sources.findAndCountAll();
   return {
     rowCount,
     data: rows.map(r => r.get({ plain: true })),
