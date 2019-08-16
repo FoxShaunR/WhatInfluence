@@ -21,7 +21,7 @@ const QUERY_TRENDING_INFLUENCERS = `
       JOIN news ON news.id = influencer_news.news_id
   WHERE news.pubdate >= now() - interval '30 day'
   GROUP BY influencers.id, influencers.full_name, influencers.primary_uri, influencers.primary_display
-  ORDER BY COUNT(news.id);
+  ORDER BY COUNT(news.id) DESC;
 `
 
 contentApp.get('/trending-influencers', async (req, res) => {
