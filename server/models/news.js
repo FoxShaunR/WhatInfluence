@@ -54,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
         'withInfluencerName',
         'withSourceName',
       ).findAndCountAll({
-        order: sequelize.col('createdAt', 'DESC'),
+        order: sequelize.col('pubdate', 'DESC'),
         limit: 50,
       });
 
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
             id,
           }
         }],
-        order: sequelize.col('createdAt', 'DESC'),
+        order: sequelize.col('pubdate', 'DESC'),
       });
   };
   return news;
