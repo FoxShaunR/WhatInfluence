@@ -17,8 +17,8 @@ const InfluencerItem = ({
     <div className={styles.main}>
       <FontAwesomeIcon className={styles.icon} icon={icon} size="4x" />
       <Link to={`/influencer/${id}`} className={styles.nameGroup}>
-        <div className={styles.name}>{full_name}</div>
-        <div className={styles.handle}>{primary_display}</div>
+        <div className={styles.name}>{primary_display}</div>
+        <div className={styles.handle}>{full_name}</div>
       </Link>
     </div>
   );
