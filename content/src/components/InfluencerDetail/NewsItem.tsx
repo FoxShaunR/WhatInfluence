@@ -20,8 +20,8 @@ const NewsItem = ({
           style={{
             color: `RGBA(${
               sentiment > 0 ?
-              `10, ${17 * sentiment}, 15, 100`
-              : `${-17 * sentiment}, 9, 9, 100`})`,
+              `10, ${17 * Math.min(sentiment, 10)}, 15, 100`
+              : `${-17 * Math.max(sentiment, -10)}, 9, 9, 100`})`,
           }}
           className={styles.title}
         >
