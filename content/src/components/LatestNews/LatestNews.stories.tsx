@@ -65,7 +65,8 @@ const INFLUENCER_ITEMS = [
 storiesOf('LatestNews', module)
   .add('display', () => <LatestNews />)
   .add('with news items', () => <LatestNews newsItems={NEWS_ITEMS} />)
-  .add('with trending influencers', () => <LatestNews trendingInfluencers={INFLUENCER_ITEMS} />);
+  .add('with trending influencers', () => <LatestNews trendingInfluencers={INFLUENCER_ITEMS} />)
+  .add('with all', () => <LatestNews newsItems={NEWS_ITEMS} trendingInfluencers={INFLUENCER_ITEMS} />);
 
 storiesOf('LatestNews/NewsItem', module)
   .add('display', () => <NewsItem {...NEWS_ITEMS[0]} />);

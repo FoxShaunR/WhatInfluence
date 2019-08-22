@@ -3,3 +3,35 @@
   flex-direction: row;
   padding: 42px 60px;
 }
+
+.mobileMenu {
+  display: flex;
+  flex-direction: row;
+}
+
+.mobileMenuBtn,
+.mobileMenuBtnActive {
+  padding: 8px;
+  margin: 10px 5px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+  color: #ad0303;
+  border: none;
+  outline: none;
+}
+
+.mobileMenuBtnActive {
+  font-weight: 600;
+}
+
+@media (max-width: 865px) {
+  .main {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 806px) {
+  .main {
+    flex-direction: column;
+  }
+}
