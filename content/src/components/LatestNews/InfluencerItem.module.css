@@ -32,3 +32,19 @@
 .handle {
   font-size: 18px;
 }
+
+@media (max-width: 865px) {
+  .main {
+    margin-bottom: 30px;
+  }
+
+  .nameGroup {
+    padding: 4px 18px;
+    height: 40px;
+  }
+
+  .name,
+  .handle {
+    font-size: 16px;
+  }
+}
