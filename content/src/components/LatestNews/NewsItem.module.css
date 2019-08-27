@@ -6,7 +6,7 @@
 }
 
 .main a {
-  text-decoration-color: #272727;
+  text-decoration: none;
 }
 
 .headerRow {
@@ -38,12 +38,12 @@
   font-size: 16px;
 }
 
-.name {
+.handle {
   font-size: 22px;
   font-weight: 700;
 }
 
-.handle {
+.name {
   font-size: 18px;
 }
 
@@ -51,7 +51,6 @@
   margin-bottom: 14px;
   font-size: 20px;
   font-weight: 700;
-  text-decoration: underline;
 }
 
 .description {
@@ -62,4 +61,47 @@
 
 .icon {
   color: #272727;
+}
+
+@media (max-width: 865px) {
+  .main {
+    margin-bottom: 30px;
+  }
+
+  .headerRow {
+    margin-bottom: 0;
+  }
+
+  .handle {
+    font-size: 16px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .pubdate {
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .nameGroup {
+    height: 42px;
+    padding: 10px 4px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .icon {
+    padding: 10px 10px 6px 0;
+  }
 }

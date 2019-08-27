@@ -18,6 +18,7 @@
   color: #ad0303;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .mobileMenuBtnActive {
@@ -26,7 +27,7 @@
 
 @media (max-width: 865px) {
   .main {
-    padding: 10px;
+    padding: 0;
   }
 }
 

@@ -17,3 +17,9 @@
 .content {
   padding: 38px 40px 38px 42px;
 }
+
+@media (max-width: 541px) {
+  .content {
+    padding: 20px;
+  }
+}

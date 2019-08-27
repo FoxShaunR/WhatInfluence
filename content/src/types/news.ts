@@ -10,7 +10,7 @@ export interface INews {
   sentiment?: number;
 }
 
-interface INewsSource {
+export interface INewsSource {
   id: number;
   name: string;
 }

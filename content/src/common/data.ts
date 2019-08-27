@@ -51,3 +51,12 @@ export const getPlatformFromURL = (url: string = ''): string => {
     return 'unknown';
   }
 };
+
+const TEXT_TRIM_MIN_LENGTH = 240;
+export const formatNewsText = (text: string = '') => {
+  let shortened = text;
+  if (text.indexOf(' ', TEXT_TRIM_MIN_LENGTH) > 0) {
+    shortened = `${text.substring(0,  text.indexOf(' ', TEXT_TRIM_MIN_LENGTH))}...`;
+  }
+  return shortened.replace('Read more...', '');
+};
