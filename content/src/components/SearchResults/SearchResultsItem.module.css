@@ -15,11 +15,25 @@
 }
 
 .name {
-  margin-left: 40px;
   font-size: 20px;
   font-weight: 700;
 }
 
 .handle {
   margin-left: auto;
+}
+
+.icon {
+  margin-right: 40px;
+}
+
+@media (max-width: 865px) {
+  .icon {
+    margin-right: 30px;
+  }
+
+  .name,
+  .handle {
+    font-size: 16px;
+  }
 }

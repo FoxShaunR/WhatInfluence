@@ -28,12 +28,7 @@
 
 @media (max-width: 865px) {
   .main {
-    padding: 0;
-  }
-}
-
-@media (max-width: 806px) {
-  .main {
     flex-direction: column;
+    padding: 0;
   }
 }

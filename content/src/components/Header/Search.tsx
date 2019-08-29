@@ -27,7 +27,7 @@ const Search = ({
   );
   return (
     <div className={styles.main}>
-      <MediaQuery minWidth={721}>
+      <MediaQuery minWidth={866}>
         <input
           className={styles.searchInput}
           placeholder="Find out..."
@@ -38,7 +38,7 @@ const Search = ({
           onChange={(val) => onSearchTextChanged && onSearchTextChanged(val.currentTarget.value)}
         />
       </MediaQuery>
-      <MediaQuery maxWidth={720}>
+      <MediaQuery maxWidth={865}>
         <input
           className={styles.searchInput}
           placeholder="Search for an influencer..."

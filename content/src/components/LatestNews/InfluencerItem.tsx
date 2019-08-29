@@ -16,10 +16,10 @@ const InfluencerItem = ({
   const icon = React.useMemo(() => getInfluencerIconFromURL(primary_uri), [primary_uri]);
   return (
     <div className={styles.main}>
-      <MediaQuery minWidth={807}>
+      <MediaQuery minWidth={866}>
         <FontAwesomeIcon className={styles.icon} icon={icon} size="4x" />
       </MediaQuery>
-      <MediaQuery maxWidth={806}>
+      <MediaQuery maxWidth={865}>
         <FontAwesomeIcon className={styles.icon} icon={icon} size="3x" />
       </MediaQuery>
       <Link to={`/influencer/${id}`} className={styles.nameGroup}>

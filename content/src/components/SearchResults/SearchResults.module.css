@@ -2,3 +2,9 @@
   padding: 40px 115px;
   display: block;
 }
+
+@media (max-width: 865px) {
+  .main {
+    padding: 0;
+  }
+}

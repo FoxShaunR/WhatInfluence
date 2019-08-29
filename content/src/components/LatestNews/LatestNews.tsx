@@ -77,10 +77,10 @@ const Mobile = ({
 const LatestNews = (props: ILatestNews) => {
   return (
     <>
-      <MediaQuery minWidth={807}>
+      <MediaQuery minWidth={866}>
         <Desktop {...props} />
       </MediaQuery>
-      <MediaQuery maxWidth={806}>
+      <MediaQuery maxWidth={865}>
         <Mobile {...props} />
       </MediaQuery>
     </>
