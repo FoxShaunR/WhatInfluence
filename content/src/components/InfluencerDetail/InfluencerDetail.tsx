@@ -1,5 +1,6 @@
 import uniqueId from 'lodash/uniqueId';
 import React from 'react';
+import MediaQuery from 'react-responsive';
 import { prepInfluencerLinks } from '../../common/data';
 import { IInfluencer } from '../../types/influencer';
 import { INews } from '../../types/news';
@@ -27,6 +28,20 @@ const getDisplayLink = (label: string, display?: string, url?: string)  => {
   );
 };
 
+const InfluencerImage = ({
+  image_uri,
+  image_attribution,
+}: IInfluencerDetail) => (
+  <>
+    {image_uri ? (
+      <div className={styles.imageGroup}>
+        <img alt="influencer" className={styles.image} src={image_uri} />
+        <span className={styles.imageAttrib}>{image_attribution}</span>
+      </div>
+    ) : <div className={styles.missingImage}>Image Not Available</div>}
+  </>
+);
+
 const InfluencerDetail = ({
   full_name,
   image_attribution,
@@ -46,18 +61,22 @@ const InfluencerDetail = ({
     <div className={styles.main}>
       <ViewContainer>
         <div className={styles.topRow}>
-          {image_uri ? (
-            <div className={styles.imageGroup}>
-              <img alt="influencer" className={styles.image} src={image_uri} />
-              <span className={styles.imageAttrib}>{image_attribution}</span>
+          <MediaQuery minWidth={866}>
+            <InfluencerImage image_attribution={image_attribution} image_uri={image_uri} />
+            <div className={styles.topRight}>
+              <h1>{primary_display}</h1>
+              <h2>{full_name}</h2>
+              {links}
             </div>
-          ) : <div className={styles.missingImage}>Image Not Available</div>}
-          <div className={styles.topRight}>
+          </MediaQuery>
+        </div>
+        <MediaQuery maxWidth={865}>
+          <a rel="noopener noreferrer" target="_blank" className={styles.linkValue} href={primary_uri}>
             <h1>{primary_display}</h1>
             <h2>{full_name}</h2>
-            {links}
-          </div>
-        </div>
+          </a>
+          <InfluencerImage image_attribution={image_attribution} image_uri={image_uri} />
+        </MediaQuery>
         <div className={styles.titleRow}>
           Latest News
         </div>

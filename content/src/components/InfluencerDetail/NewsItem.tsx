@@ -1,4 +1,6 @@
 import React from 'react';
+import MediaQuery from 'react-responsive';
+import { formatNewsText } from '../../common/data';
 import { formatDate } from '../../common/helpers';
 import { INewsWithSource } from '../../types/news';
 
@@ -27,10 +29,15 @@ const NewsItem = ({
         >
           {title}
         </span>
-        {pubdate && <span className={styles.date}>{formatDate(new Date(pubdate))}</span>}
+        <MediaQuery minWidth={866}>
+          {pubdate && <span className={styles.date}>{formatDate(new Date(pubdate))}</span>}
+        </MediaQuery>
       </div>
+      <MediaQuery maxWidth={865}>
+        {pubdate && <div className={styles.date}>{formatDate(new Date(pubdate))}</div>}
+      </MediaQuery>
       <p className={styles.description}>
-        {description.substr(0, 260)}
+        {formatNewsText(description)}
         <a rel="noopener noreferrer" target="_blank" className={styles.link} href={link}> - {name}</a>
       </p>
     </div>

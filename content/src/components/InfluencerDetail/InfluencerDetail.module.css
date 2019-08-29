@@ -66,6 +66,10 @@
   margin-bottom: 16px;
 }
 
+.main a {
+  text-decoration: none;
+}
+
 .linkItem {
   margin-bottom: 10px;
   font-family: 'Work Sans', sans-serif;
@@ -83,4 +87,10 @@
   font-family: 'Work Sans', sans-serif;
   font-size: 16px;
   border-bottom: 0.65px solid #ab0909;
+}
+
+@media (max-width: 865px) {
+  .main {
+    padding: 0;
+  }
 }
